@@ -1,0 +1,123 @@
+.seatContainer {
+  display: grid;
+  grid-template-rows: 70px 70px auto 70px;
+  background-color: #f2f2f2;
+}
+
+.movieDetails {
+  background-color: #1f2533;
+  color: #fff;
+  display: flex;
+}
+
+.timingDetails {
+  background-color: #f5f5fa;
+}
+
+.footer {
+  /* background-color: red; */
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seatDetails {
+  background-color: #fff;
+}
+
+.seat {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #1ea83c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #1ea83c;
+  border-radius: 2px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.rowSeatContainer {
+  display: flex;
+}
+
+.verticalValue {
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  color: #b3b3b3;
+}
+
+.rowContainer {
+  display: flex;
+}
+
+.seat:hover {
+  background-color: #1ea83c;
+  color: #ffffff;
+}
+
+.seatListContainer {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.price {
+  color: #b3b3b3;
+  border-bottom: 1px solid #ececec;
+  /* padding: 20px; */
+  padding-bottom: 20px;
+  margin: 20px 200px;
+}
+
+.seatDetails {
+  padding: 50px 0 100px 0;
+}
+
+.movieDetCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movieDetCont > div {
+  margin: 4px;
+}
+
+.movieName {
+  font-size: 15px;
+}
+
+.theaterName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c6c6c9;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.bookButton {
+  outline: none;
+  border: 0;
+  width: 350px;
+  height: 40px;
+  background-color: #f84464;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+}

@@ -1,0 +1,42 @@
+.baseContainer {
+  display: grid;
+  grid-template-rows: 75px auto 200px;
+  overflow: auto;
+}
+
+.header {
+  background-color: #333545;
+}
+
+.topNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.footer {
+  background-color: #333338;
+}
+
+.bmsLogo > svg {
+  height: 130px;
+}
+
+.searchContainer {
+  width: 60%;
+}
+
+.signInButton {
+  margin-left: 40px;
+  outline: none;
+  border: 0;
+  background-color: #0078ff;
+  padding: 6px 10px;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.body {
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,24 @@
+.imageCardContainer {
+  width: 250px;
+  /* height: 425px; */
+  display: grid;
+  grid-template-rows: 370px auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.movieImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.imageName {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.movieImageBorder {
+  border-radius: 10px;
+}
