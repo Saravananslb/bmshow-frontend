@@ -1,27 +1,47 @@
-import React, { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { DAY_DATE_MAPPING } from "../../utils/commonConst";
-
+import { getTheatreList } from "../../services/apiCall";
 import styles from "./theater.module.css";
+import { Context } from "../../store/context";
+import { ADD_THEATRE_LIST } from "../../store/action.types";
 
 export const Theater = () => {
   const navigate = useNavigate();
+  const { movieId } = useParams();
+  const {state, dispatch} = useContext(Context);
 
-  const onSelectTiming = () => {
-    navigate("/seat");
+  const onSelectTiming = (showId, theatreId) => {
+    navigate(`/movie/${movieId}/theatre/${theatreId}/show/${showId}/seat`);
   };
+
+  useEffect(() => {
+    getTheatres();
+  }, []);
+
+  const getTheatres = () => {
+    getTheatreList(movieId).then(data => {
+      console.log(data);
+      dispatch({
+        type: ADD_THEATRE_LIST,
+        payload: {
+          theatreList: data.showList
+        }
+      })
+    })
+  }
 
   return (
     <div className={styles.theaterContainer}>
       <div className={styles.extraNav}></div>
-      <div className={styles.movieDetails}>Movie Name</div>
+      <div className={styles.movieDetails}>{state.name}</div>
 
       <div className={styles.dateDetails}>
         <DateComponent />
       </div>
       <div className={styles.theaterDetails}>
-        <TheaterDetails onSelectTiming={onSelectTiming} />
+        <TheaterDetails onSelectTiming={onSelectTiming} theatres={state.theatreList} />
       </div>
     </div>
   );
@@ -62,63 +82,26 @@ const DateComponent = () => {
   );
 };
 
-const TheaterDetails = ({ onSelectTiming }) => {
+const TheaterDetails = ({ onSelectTiming, theatres }) => {
   return (
     <div className={styles.theaterDetailsContainer}>
-      <div className={styles.theaterRow}>
-        <div className={styles.theaterName}>Theater Name</div>
+      {theatres.map(item => {
+        return (<div className={styles.theaterRow}>
+        <div className={styles.theaterName}>{item.theatreName}</div>
         <div className={styles.theaterTiming}>
           <div className={styles.timingContainer}>
-            <div onClick={onSelectTiming} className={styles.time}>
-              10:00 AM
-            </div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
+            {item.shows.map(showItem => {
+              return (<div onClick={() => onSelectTiming(Object.keys(showItem)[0], item.theatreId)} className={styles.time}>
+                {Object.values(showItem)[0]}
+            </div>)
+            })}
+            
+            
           </div>
         </div>
-      </div>
-      <div className={styles.theaterRow}>
-        <div className={styles.theaterName}>Theater Name</div>
-        <div className={styles.theaterTiming}>
-          <div className={styles.timingContainer}>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.theaterRow}>
-        <div className={styles.theaterName}>Theater Name</div>
-        <div className={styles.theaterTiming}>
-          <div className={styles.timingContainer}>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-            <div className={styles.time}>10:00 AM</div>
-          </div>
-        </div>
-      </div>
+      </div>)
+      })}
+      
     </div>
   );
 };

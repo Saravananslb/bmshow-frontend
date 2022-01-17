@@ -9,6 +9,10 @@ import "./App.css";
 
 const initialState = {
   openAuth: false,
+  moviesList: [],
+  activeMovie: {},
+  theatreList: [],
+  message: ''
 };
 
 function App() {

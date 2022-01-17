@@ -22,11 +22,11 @@ export const Pages = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie" element={<Movie />} />
+        <Route path="/movie/:movieId" element={<Movie />} />
 
-        <Route path="/theater" element={<Theater />} />
+        <Route path="/movie/:movieId/theater-list" element={<Theater />} />
 
-        <Route path="/seat" element={<Seat />} />
+        <Route path="/movie/:movieId/theatre/:theatreId/show/:showId/seat" element={<Seat />} />
       </Routes>
     </Base>
   );

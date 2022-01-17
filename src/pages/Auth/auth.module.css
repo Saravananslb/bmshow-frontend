@@ -62,3 +62,8 @@
   left: 100%;
   cursor: pointer;
 }
+
+.newUser {
+  cursor: pointer;
+  color: brown;
+}

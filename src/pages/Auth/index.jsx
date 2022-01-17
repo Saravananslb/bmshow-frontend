@@ -11,7 +11,7 @@ export const Auth = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authLogContainer}>
-        <SignUp />
+        <SignIn />
       </div>
     </div>
   );
