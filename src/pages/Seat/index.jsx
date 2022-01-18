@@ -74,11 +74,11 @@ export const Seat = () => {
         });
       }
       else {
-        // navigate('/')
+        navigate('/')
         dispatch({
           type: BOOK_TICKET_MESSAGE,
           payload: {
-            message: `Ticket Booked successfully and your booking id is ${data.booked._id}`
+            message: `Ticket Booked successfully and your booking id is ${data.booked.booked._id}`
           }
         })
       }
