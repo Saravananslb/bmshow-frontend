@@ -40,3 +40,16 @@
 .body {
   background-color: #f2f2f2;
 }
+
+
+.bookings {
+  color: #ffffff;
+  text-align: right;
+  margin-right: 20px;
+  flex-grow: 1;
+}
+
+.bookings > span:hover {
+  color: #a39494;
+  cursor: pointer;
+}

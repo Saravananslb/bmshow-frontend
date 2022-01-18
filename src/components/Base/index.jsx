@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Search } from "../Search";
 
@@ -7,9 +7,12 @@ import styles from "./base.module.css";
 import { ReactComponent as BmsLogoIcon } from "../../assets/svg/bmsLogo.svg";
 import { Context } from "../../store/context";
 import { OPEN_AUTH } from "../../store/action.types";
+import { useState } from "react/cjs/react.development";
+import {cookies} from '../../services/apiCall';
 
-export const Base = ({ children, enabled = true }) => {
+export const Base = ({ onHistory, children, enabled = true }) => {
   const { dispatch } = useContext(Context);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const onSignIn = () => {
     dispatch({
@@ -19,6 +22,12 @@ export const Base = ({ children, enabled = true }) => {
       },
     });
   };
+
+  useEffect(() => {
+    const cookie = cookies.get('authToken');
+    if (cookie)
+    setIsAuthenticated(true)
+  }, [])
 
   return (
     <>
@@ -32,11 +41,16 @@ export const Base = ({ children, enabled = true }) => {
               <div className={styles.searchContainer}>
                 <Search />
               </div>
-              <div>
+              {isAuthenticated ? 
+              (<div>
                 <button onClick={onSignIn} className={styles.signInButton}>
                   Sign In
                 </button>
-              </div>
+              </div>) :
+              (<div onClick={onHistory} className={styles.bookings}>
+                <span>Bookings</span>
+              </div>)
+              }
             </nav>
           </div>
           <div className={styles.body}>{children}</div>

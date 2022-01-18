@@ -1,0 +1,45 @@
+.bookingHistoryContainer {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 20px solid #f2f2f2;
+  }
+  
+  .bookingHistoryRow {
+    display: flex;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 30px;
+  }
+  
+  .bookingHistoryDetails {
+    padding: 30px;
+  }
+  
+  .bookingHistoryDetails > div {
+    margin-bottom: 30px;
+  }
+  
+  .movieName {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  
+  .theaterName {
+    font-size: 18px;
+    font-weight: 800;
+    color: #575757;
+  }
+  
+  .timing {
+    display: inline-flex;
+    padding: 8px 10px;
+    border: 1px solid #1ea83c;
+    border-radius: 4px;
+    /* color: #1ea83c; */
+  }
+  
+  .bold {
+    font-weight: 700;
+  }

@@ -52,3 +52,13 @@ export const bookTickets = (bodyPayload) => {
         body: JSON.stringify(bodyPayload)
     }).then(data => data.json());
 };
+
+export const getBookingTickets = () => {
+    return fetch(`${BASE_URL}/api/v1/movie/bookings`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'authToken': cookies.get('authToken')
+        }
+    }).then(data => data.json());
+};
